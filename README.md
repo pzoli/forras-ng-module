@@ -1,5 +1,6 @@
 # ForrasNgModule
 
+This is a front-end project for Forras-admin healthcare server project.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
 
 ## Development server

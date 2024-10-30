@@ -1,0 +1,13 @@
+.loggedin {
+color: lime;
+text-transform: uppercase;
+}
+
+.loggedout::before {
+  content:'not '
+}
+
+.loggedout {
+  color: red;
+  text-transform: lowercase;
+}
