@@ -10,11 +10,13 @@ export class NavbarComponent {
   items:MenuItem[] = [
       {
         label: 'Home',
-        url: '/home'
+        url: '/home',
+        target: '_self',
       },
       {
         label: 'Doctors',
         url: '/doctors',
+        target: '_self',
       }
   ]
 }

@@ -11,7 +11,7 @@
   </ng-template>
   <ng-template pTemplate="body" let-doctor>
     <tr>
-      <td><p-button (onClick)="currentDoctor = doctor; showDialog()" label="Modify" /><p-button (onClick)="confirm(doctor)" label="Remove" /></td>
+      <td><p-button (onClick)="setCurrentDoctor(doctor); showDialog()" label="Modify" /><p-button (onClick)="confirm(doctor)" label="Remove" /></td>
       <td>{{ doctor.id }}</td>
       <td>{{ doctor.name }}</td>
     </tr>

@@ -1,4 +1,4 @@
-import {AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {Doctor, DoctorService} from '../services/doctor.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
 
@@ -60,5 +60,11 @@ export class DoctorComponent implements OnInit {
         this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
       }
     });
+  }
+
+  protected readonly structuredClone = structuredClone;
+
+  setCurrentDoctor(doctor: Doctor) {
+    this.currentDoctor = structuredClone(doctor);
   }
 }
