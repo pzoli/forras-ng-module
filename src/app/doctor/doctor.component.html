@@ -1,24 +1,25 @@
 <p-toast />
 <p-confirmDialog />
 
-<p-table [value]="doctors" [tableStyle]="{ 'min-width': '50rem' }">
+<p-table [value]="doctors" [tableStyle]="{ 'min-width': '50rem' }"
+         styleClass="p-datatable-striped">
   <ng-template pTemplate="header">
     <tr>
-      <th></th>
+      <th style="width:10%"></th>
       <th>id</th>
       <th>Name</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-doctor>
     <tr>
-      <td><p-button (onClick)="setCurrentDoctor(doctor); showDialog()" label="Modify" /><p-button (onClick)="confirm(doctor)" label="Remove" /></td>
+      <td><p-button icon="pi pi-pencil" (onClick)="setCurrentDoctor(doctor); showDialog()" title="Modify" [style]="{'margin-right':'10px'}"/><p-button icon="pi pi-trash" (onClick)="confirm(doctor)" title="Remove" /></td>
       <td>{{ doctor.id }}</td>
       <td>{{ doctor.name }}</td>
     </tr>
   </ng-template>
 </p-table>
 
-<p-button (onClick)="createNewDoctor(); displayDialog=true">Create</p-button>
+<p-button icon="pi pi-file" (onClick)="createNewDoctor(); displayDialog=true" label="Create"></p-button>
 
 <p-dialog header="Edit Doctor" [modal]="true" [(visible)]="displayDialog" [style]="{ width: '25rem' }" (onHide)="displayDialog = false">
   <span class="p-text-secondary block mb-5">Update doctor.</span>

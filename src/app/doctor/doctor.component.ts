@@ -10,7 +10,6 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 })
 export class DoctorComponent implements OnInit {
 
-  public name: string | undefined = "";
   public doctors: Doctor[] = [];
   public currentDoctor: Doctor = {} as Doctor;
   public displayDialog = false;

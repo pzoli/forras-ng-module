@@ -13,10 +13,15 @@ export class NavbarComponent {
         url: '/home',
         target: '_self',
       },
-      {
-        label: 'Doctors',
-        url: '/doctors',
-        target: '_self',
-      }
+    {
+      label: 'Data',
+      items: [
+          {
+            label: 'Doctors',
+            url: '/doctors',
+            target: '_self',
+          }
+      ]
+    }
   ]
 }
