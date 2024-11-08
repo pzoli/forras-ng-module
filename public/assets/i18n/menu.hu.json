@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "label": "Kezdőlap",
+      "url": ",/home",
+      "target": "_self",
+      "role": "user"
+    },
+    {
+      "label": "Adat",
+      "role": "manager",
+      "items": [
+        {
+          "label": "Orvosok",
+          "url": "/doctors",
+          "target": "_self",
+          "role": "manager"
+        }
+      ]
+    }
+  ]
+}

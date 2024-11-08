@@ -1,0 +1,11 @@
+{
+  "home": {
+    "title": "Homepage"
+  },
+  "menu": {
+    "logout": "Logout",
+    "home": "Home",
+    "data" : "Data",
+    "doctor": "Doctor"
+  }
+}

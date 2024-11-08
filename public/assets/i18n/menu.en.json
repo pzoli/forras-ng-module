@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "label": "Home",
+      "url": ",/home",
+      "target": "_self",
+      "role": "user"
+    },
+    {
+      "label": "Data",
+      "role": "manager",
+      "items": [
+        {
+          "label": "Doctors",
+          "url": "/doctors",
+          "target": "_self",
+          "role": "manager"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "home": {
+    "title": "Kezdőlap"
+  },
+  "menu": {
+    "logout": "Kilépés",
+    "home": "Kezdőlap",
+    "data" : "Adat",
+    "doctor": "Doktor"
+  }
+}
