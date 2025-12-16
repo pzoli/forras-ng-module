@@ -64,7 +64,7 @@ export class CaptureMessageComponent implements OnDestroy {
     let tracks = stream.getTracks()
     tracks.forEach(track => track.stop())
     this.videoLive.nativeElement.srcObject = null
-    this.loadVideo();
+    await this.loadVideo()
     this.recordMode = false
   }
 
