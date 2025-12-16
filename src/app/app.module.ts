@@ -12,6 +12,7 @@ import {NavbarModule} from './navbar/navbar.module';
 import {HttpClient, provideHttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {VideoMessageModule} from './video-message/video-message.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http)
@@ -28,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavbarModule,
     HomeModule,
     DoctorModule,
+    VideoMessageModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {

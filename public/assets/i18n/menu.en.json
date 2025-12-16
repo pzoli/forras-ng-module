@@ -17,6 +17,18 @@
           "role": "manager"
         }
       ]
+    },
+    {
+      "label": "Communication",
+      "role": "user",
+      "items": [
+        {
+          "label": "Video message",
+          "url": "/video-message/capture-message",
+          "target": "_self",
+          "role": "user"
+        }
+      ]
     }
   ]
 }
