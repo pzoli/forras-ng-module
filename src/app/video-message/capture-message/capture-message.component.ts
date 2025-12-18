@@ -40,7 +40,7 @@ export class CaptureMessageComponent implements OnDestroy {
   async startVideo() {
     this.recordMode = true
     let profile = await this.httpClient.keycloak.loadUserProfile();
-    this.fileName = `${profile.id}-${new Date().getTime()}`;
+    this.fileName = await this.getFileName();
     if (!MediaRecorder.isTypeSupported(this.mimeCodec)) { // <2>
       console.warn('video/webm is not supported')
       alert('Sajnáljuk, de az Ön böngészője nem támogatja a video/webm formátumot.')
@@ -57,9 +57,14 @@ export class CaptureMessageComponent implements OnDestroy {
     }
   }
 
+  async getFileName() {
+    return (await (await this.httpClient.getInstance()).get(`/api/video/filename`)).data as String
+  }
+
   async stopVideo() {
     if (this.registerInterval)
       clearInterval(this.registerInterval)
+    await (await this.httpClient.getInstance()).put(`/api/video/closemedia?origin=${this.fileName}`)
     let stream = this.videoLive.nativeElement.srcObject as MediaStream
     let tracks = stream.getTracks()
     tracks.forEach(track => track.stop())
