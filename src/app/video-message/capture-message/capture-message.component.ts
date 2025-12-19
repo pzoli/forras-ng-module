@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
 import {HttpClientService} from '../../services/http-client.service';
+import { MediaInfo, MediaInfoService } from '../../services/mediainfo.service';
 
 @Component({
   selector: 'app-capture-message',
@@ -20,10 +21,12 @@ export class CaptureMessageComponent implements OnDestroy {
 
   public recordMode = false
 
+  public mediaInfos: Promise<MediaInfo[]> = Promise.resolve([]);
+
   registerInterval:ReturnType<typeof setInterval> | undefined
 
-  constructor(public httpClient: HttpClientService) {
-
+  constructor(public mediaInfoService: MediaInfoService, public httpClient: HttpClientService) {
+    this.mediaInfos = this.getVideoInfoList();
   }
 
   public get playbackViewDisplay(): string {
@@ -35,6 +38,21 @@ export class CaptureMessageComponent implements OnDestroy {
       video: true,
       audio: true,
     })
+  }
+
+  public setFileName(fileName: String) {
+    this.fileName = fileName
+  }
+
+  async deleteVideo(id: number) {
+    await this.mediaInfoService.removeMediaInfo(id)
+    this.mediaInfos = this.getVideoInfoList()
+  }
+
+  async getVideoInfoList() : Promise<MediaInfo[]> {
+    let profile = await this.httpClient.keycloak.loadUserProfile()
+    let result = await this.mediaInfoService.getMediaInfos(profile.id!!)
+    return result
   }
 
   async startVideo() {
@@ -71,11 +89,12 @@ export class CaptureMessageComponent implements OnDestroy {
     this.videoLive.nativeElement.srcObject = null
     await this.loadVideo()
     this.recordMode = false
+    this.mediaInfos = this.getVideoInfoList()
   }
 
-  async loadVideo() {
+  async loadVideo(fileName: String = this.fileName) {
     let profile = await this.httpClient.keycloak.loadUserProfile();
-    const response = (await (await this.httpClient.getInstance()).get(`/api/video/stream?origin=${this.fileName + ".webm"}&userid=${profile.id}`, { responseType: 'blob' })).data
+    const response = (await (await this.httpClient.getInstance()).get(`/api/video/stream?origin=${fileName + ".webm"}&userid=${profile.id}`, { responseType: 'blob' })).data
     const videoBlob = new Blob([response], { type: this.mimeCodec })
     const videoUrl = URL.createObjectURL(videoBlob)
     this.videoPlayback.nativeElement.src = videoUrl

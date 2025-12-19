@@ -8,3 +8,12 @@
         Sajnos a böngészője nem támogatja a beágyazott videókat.
     </video>  
 </div>
+<div>
+  <h3>Korábban rögzített videók:</h3>
+  <ul>
+    <li *ngFor="let info of mediaInfos | async" style="margin-bottom: 10px;list-style-type: none;">
+      <p-button (click)="loadVideo(info.fileName); setFileName(info.fileName);">{{info.closeDate | date: 'yyyy.MM.dd HH:mm:ss'}}</p-button>
+      <p-button type="button" (click)="deleteVideo(info.id);setFileName('');" severity="danger">X</p-button>
+    </li>
+  </ul>
+</div>
