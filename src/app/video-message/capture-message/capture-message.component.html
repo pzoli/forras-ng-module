@@ -2,6 +2,8 @@
   <p-button (click)="startVideo()" [disabled]="recordMode">Start video record</p-button>
   <p-button type="button" id="buttonStop" (click)="stopVideo()" [disabled]="!recordMode">Stop video recording</p-button>
   <video autoplay muted playsinline id="videoLive" #videoLive [style.display]="recordMode ? 'block' : 'none'"></video>
+  <div *ngIf="recordMode">
+    <p>Rögzítés folyamatban... Időtartam: {{videoDuration}}</p>
 </div>
 <div id="playbackView" #playbackView [style.display]="playbackViewDisplay">
   <video controls muted id="videoPlayback" #videoPlayback>

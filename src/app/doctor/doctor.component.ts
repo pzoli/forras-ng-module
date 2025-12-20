@@ -13,6 +13,7 @@ export class DoctorComponent implements OnInit {
   public doctors: Doctor[] = [];
   public currentDoctor: Doctor = {} as Doctor;
   public displayDialog = false;
+  private pastDate!: Date;
 
   constructor(public doctorService: DoctorService, private confirmationService: ConfirmationService, private messageService: MessageService) {
   }
