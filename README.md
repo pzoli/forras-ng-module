@@ -8,3 +8,6 @@ Connected project:
 ## Setup
 
 Please make an SSL key and certificate file, and don't forget to update the package.json file script/start settings at ng serve arguments.
+
+## Demo
+- Please see my [Youtube video](https://www.youtube.com/watch?v=YtkTsc6V-Lw)
