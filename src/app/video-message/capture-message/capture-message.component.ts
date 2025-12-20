@@ -97,10 +97,12 @@ export class CaptureMessageComponent implements OnDestroy {
         let countUploadChunk = 0
         let self = this
         this.mediaRecorder.ondataavailable = async (data) => {
-          let profile = await this.httpClient.keycloak.loadUserProfile()
-          console.log(`Uploading chunk #${countUploadChunk} for user ${profile.id}`)
-          countUploadChunk++      
-          this.sendFile(data.data, self.fileName)
+          if (data.data.size > 0) {
+            let profile = await this.httpClient.keycloak.loadUserProfile()
+            console.log(`Uploading chunk #${countUploadChunk} for user ${profile.id}`)
+            countUploadChunk++
+            await this.sendFile(data.data, self.fileName)
+          }
         }
         this.mediaRecorder.start(2000)
         this.timeRefreshInterval = setInterval(() => {
@@ -129,7 +131,7 @@ export class CaptureMessageComponent implements OnDestroy {
       await this.loadVideo()
       this.recordMode = false
       this.mediaInfos = this.getVideoInfoList()
-    }, 500);
+    }, 2000);
   }
 
   async loadVideo(fileName: String = this.fileName) {
