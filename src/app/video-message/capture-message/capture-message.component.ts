@@ -120,6 +120,8 @@ export class CaptureMessageComponent implements OnDestroy {
   }
 
   async stopVideo() {
+    if (this.timeRefreshInterval)
+      clearInterval(this.timeRefreshInterval)
     this.isLastChunk = true
     this.mediaRecorder.stop()
     let stream = this.videoLive.nativeElement.srcObject as MediaStream
@@ -128,8 +130,8 @@ export class CaptureMessageComponent implements OnDestroy {
     this.videoLive.nativeElement.srcObject = null
     this.pastDate = new Date();
     setTimeout(async () => {
-      await this.loadVideo()
       this.recordMode = false
+      await this.loadVideo()
       this.mediaInfos = this.getVideoInfoList()
     }, 2000);
   }
