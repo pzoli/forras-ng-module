@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --ssl true --ssl-key ./ssl/lenovo-e16g2.me.local.key --ssl-cert ./ssl/lenovo-e16g2.me.local.crt",
+    "start": "ng serve --host 0.0.0.0 --ssl true --ssl-key ./ssl/lenovo.me.local.key --ssl-cert ./ssl/lenovo.me.local.crt",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
